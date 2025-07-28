@@ -5,11 +5,10 @@ function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer mensaje="¡Bienvenido a la tienda de Vans!" />
+      <ItemListContainer saludo="¡Bienvenido a nuestra tienda online!" />
     </>
   );
 }
 
 export default App;
-
 

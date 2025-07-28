@@ -1,9 +1,11 @@
-const ItemListContainer = ({ mensaje }) => {
-    return (
-    <section style={{ padding: "2rem" }}>
-        <h2>{mensaje}</h2>
-    </section>
-    );
+const ItemListContainer = ({ saludo }) => {
+  return (
+    <div className="container mt-5">
+      <div className="alert alert-primary text-center" role="alert">
+        {saludo}
+      </div>
+    </div>
+  );
 };
 
 export default ItemListContainer;
