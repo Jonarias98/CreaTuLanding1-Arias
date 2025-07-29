@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer saludo="¡Bienvenido a nuestra tienda online!" />
+      <main className="container-md mt-4">
+        <ItemListContainer saludo="¡Bienvenido a nuestra tienda online!" />
+      </main>
     </>
   );
 }
