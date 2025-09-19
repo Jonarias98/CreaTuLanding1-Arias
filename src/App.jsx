@@ -11,8 +11,8 @@ function App() {
       <NavBar />
       <main className="container-md mt-4">
         <Routes>
-          <Route path="/" element={<ItemListContainer saludo="¡Bienvenido a nuestra tienda online!" />} />
-          <Route path="/category/:categoryId" element={<ItemListContainer saludo="¡Bienvenido a nuestra tienda online!" />} />
+          <Route path="/" element={<ItemListContainer greeting="¡Bienvenido a nuestra tienda online!" />} /><Route path="/category/:categoryId" element={<ItemListContainer greeting="¡Bienvenido a nuestra tienda online!" />} />
+          <Route path="/category/:categoryId" element={<ItemListContainer greeting="¡Bienvenido a nuestra tienda online!" />} />
           <Route path="/item/:itemId" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckoutForm />} />
