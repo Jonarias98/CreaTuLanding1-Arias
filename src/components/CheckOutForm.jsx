@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { db } from "../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
