@@ -7,7 +7,6 @@ const NavBar = () => {
       <Link className="navbar-brand" to="/">
         Mi Tienda
       </Link>
-
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav me-auto">
           <li className="nav-item">
@@ -16,18 +15,24 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/category/productos">
-              Productos
+            <Link className="nav-link" to="/category/zapatillas">
+              Zapatillas
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/category/contacto">
-              Contacto
+            <Link className="nav-link" to="/category/remeras">
+              Remeras
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/category/accesorios">
+              Accesorios
             </Link>
           </li>
         </ul>
-
-        <CartWidget />
+        <Link to="/cart">
+          <CartWidget />
+        </Link>
       </div>
     </nav>
   );

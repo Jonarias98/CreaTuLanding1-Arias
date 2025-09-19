@@ -1,38 +1,33 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-const products = [
-  { id: 1, name: "Zapatillas Vans", price: 50000, category: "zapatillas" },
-  { id: 2, name: "Remera Vans", price: 15000, category: "remeras" },
-  { id: 3, name: "Mochila Vans", price: 20000, category: "accesorios" },
-];
-
-const getProductById = (id) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(products.find((prod) => prod.id === Number(id)));
-    }, 1000);
-  });
-};
+import ItemDetail from "./ItemDetail";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
 function ItemDetailContainer() {
   const { itemId } = useParams();
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProductById(itemId).then((res) => setProduct(res));
+    setLoading(true);
+    const productRef = doc(db, "products", itemId);
+
+    getDoc(productRef)
+      .then((docSnap) => {
+        if (docSnap.exists()) {
+          setProduct({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.log("Producto no encontrado");
+        }
+      })
+      .finally(() => setLoading(false));
   }, [itemId]);
 
-  if (!product) return <p>Cargando producto...</p>;
+  if (loading) return <p>Cargando producto...</p>;
+  if (!product) return <p>Producto no encontrado</p>;
 
-  return (
-    <div>
-      <h2>{product.name}</h2>
-      <p>Precio: ${product.price}</p>
-      <p>Categoría: {product.category}</p>
-      {/* Aquí luego podés agregar ItemCount para unidades */}
-    </div>
-  );
+  return <ItemDetail product={product} />;
 }
 
 export default ItemDetailContainer;
